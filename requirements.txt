@@ -1,0 +1,5 @@
+# Binance Futures Trading Bot
+# Python 3.10+
+# Install: pip install -r requirements.txt
+requests~=2.33.1
+typer~=0.25.1
