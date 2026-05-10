@@ -18,6 +18,7 @@ A robust command-line trading bot for the Binance Futures Testnet executing MARK
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Logging](#logging)
+- [How This Was Built — Multi-Agent AI Pipeline](#-how-this-was-built--multi-agent-ai-pipeline)
 - [Assumptions & Notes](#assumptions--notes)
 - [License](#license)
 
@@ -209,6 +210,28 @@ Example log lines:
 2025-01-15 14:23:02,103 | INFO | client | Response: {'orderId': 3412567890, 'status': 'FILLED', 'executedQty': '0.001', 'avgPrice': '34000.00'}
 2025-01-15 14:23:02,150 | ERROR | client | Binance API error: code=-2011, msg=Unknown order sent.
 ```
+
+## How This Was Built — Multi-Agent AI Pipeline
+
+This project was built using a Blackboard Architecture, where multiple specialised AI agents collaborate exclusively through a shared coordination document (`blackboard.md`). This approach enforces strict isolation and prevents uncoordinated agent interactions, ensuring predictable and verifiable development.
+
+```text
+  [Orchestrator]
+        │ (Defines Tasks)
+        ▼
+  [Blackboard] ◀── [Agent 2: Core Coder]
+        ▲      ◀── [Agent 3: CLI Coder]
+        │      ◀── [Agent 4: Docs + Runner]
+        └──────◀── [Agent 5: Verifier]
+```
+
+- **Agent 1 — Orchestrator**: Designed the implementation plan, defined the blackboard schema, and assigned scoped tasks without writing application code.
+- **Agent 2 — Core Coder**: Implemented the foundational `bot/` package, including the Binance API client, HMAC-SHA256 signing, validation rules, and logging.
+- **Agent 3 — CLI Coder**: Built the Typer-based command-line interface, securely wiring user inputs to the core execution logic via environment variables.
+- **Agent 4 — Docs + Runner**: Authored the project documentation and executed live testnet trades to capture verifiable order logs.
+- **Agent 5 — Verifier**: Audited all agent outputs against a 51-point checklist to guarantee protocol compliance, security, and functional completeness.
+
+This architecture demonstrates the effectiveness of a strict two-write protocol to maintain a clear separation of concerns, resulting in highly reproducible and verifiable software outputs.
 
 ## Assumptions & Notes
 
