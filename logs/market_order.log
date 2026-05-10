@@ -1,0 +1,16 @@
+2026-05-10 14:15:14,225 | INFO | cli | Order request summary:
++-------------------------------------+
+|         ORDER REQUEST SUMMARY       |
++-------------------------------------+
+|  Symbol     : BTCUSDT               |
+|  Side       : BUY                   |
+|  Type       : MARKET                |
+|  Quantity   : 0.001                 |
+|  Price      : N/A                   |
+|  Stop Price : N/A                   |
++-------------------------------------+
+2026-05-10 14:15:14,226 | DEBUG | client | Placing order with params: {'quantity': '0.001', 'side': 'BUY', 'symbol': 'BTCUSDT', 'timestamp': 1778402714226, 'type': 'MARKET'}
+2026-05-10 14:15:14,228 | DEBUG | connectionpool | Starting new HTTPS connection (1): testnet.binancefuture.com:443
+2026-05-10 14:15:14,985 | DEBUG | connectionpool | https://testnet.binancefuture.com:443 "POST /fapi/v1/order?quantity=0.001&side=BUY&symbol=BTCUSDT&timestamp=1778402714226&type=MARKET&signature=8addd4b8f4e69e626555fc92e702b603abb53f1a20c7f3a0134f3272829db195 HTTP/1.1" 401 69
+2026-05-10 14:15:14,985 | ERROR | client | Binance API error: code=-2015, msg=Invalid API-key, IP, or permissions for action
+2026-05-10 14:15:14,985 | ERROR | cli | BinanceAPIError: BinanceAPIError(code=-2015): Invalid API-key, IP, or permissions for action
